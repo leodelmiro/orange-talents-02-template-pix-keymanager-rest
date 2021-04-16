@@ -14,4 +14,7 @@ class GrpcClientFactory(@GrpcChannel("keyManager") val channel: ManagedChannel) 
     @Singleton
     fun removeChaveClientStub() = KeyManagerRemoveGrpcServiceGrpc.newBlockingStub(channel)
 
+    @Singleton
+    fun removeConsultaClientStub() = KeyManagerConsultaGrpcServiceGrpc.newBlockingStub(channel)
+
 }
