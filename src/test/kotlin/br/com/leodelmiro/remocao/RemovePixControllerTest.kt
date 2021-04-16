@@ -35,7 +35,7 @@ internal class RemovePixControllerTest {
     lateinit var client: HttpClient
 
     @Test
-    fun `deve registrar chave quando tudo estiver Ok`() {
+    fun `deve remover chave quando tudo estiver Ok`() {
         val idPix = UUID.randomUUID()
         val idCliente = UUID.randomUUID()
         val remocaoChaveRequest = remocaoChaveRequest(idPix.toString(), idCliente.toString())
@@ -69,9 +69,6 @@ internal class RemovePixControllerTest {
     fun `deve retornar 400 quando cliente id tiver formato invalido`() {
         val idPix = UUID.randomUUID()
         val idCliente = 123
-        val remocaoChaveRequest = remocaoChaveRequest(idPix.toString(), idCliente.toString())
-
-        given(removeStub.removerChave(remocaoChaveRequest)).willThrow(StatusRuntimeException(Status.INVALID_ARGUMENT))
 
         val request = HttpRequest.DELETE<Any>("/api/v1/clientes/$idCliente/pix/$idPix")
         val thrown = assertThrows<HttpClientResponseException> {
