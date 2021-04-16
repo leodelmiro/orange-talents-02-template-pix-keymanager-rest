@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory
 import java.util.*
 import javax.inject.Inject
 
-@Validated
 @Controller("/api/v1/clientes/{idCliente}/pix/{idPix}")
 class RemovePixController(@Inject val gRpcClient: KeyManagerRemoveGrpcServiceGrpc.KeyManagerRemoveGrpcServiceBlockingStub) {
 
