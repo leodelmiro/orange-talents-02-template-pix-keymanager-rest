@@ -10,12 +10,12 @@ import org.slf4j.LoggerFactory
 import java.util.*
 import javax.inject.Inject
 
-@Controller("/api/v1/clientes/{idCliente}/pix/{idPix}")
+@Controller("/api/v1/clientes/{idCliente}")
 class ConsultaPixController(@Inject val gRpcClient: KeyManagerConsultaGrpcServiceGrpc.KeyManagerConsultaGrpcServiceBlockingStub) {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    @Get
+    @Get("/pix/{idPix}")
     fun consultaPorId(@PathVariable idCliente: UUID, @PathVariable idPix: UUID): HttpResponse<Any> {
 
         logger.info("Consultando chave pix id: $idPix do cliente: $idCliente")
@@ -28,7 +28,6 @@ class ConsultaPixController(@Inject val gRpcClient: KeyManagerConsultaGrpcServic
                         .setIdCliente(idCliente.toString())
                 ).build()
         )
-
 
         return HttpResponse.ok(DetalhesChavePixResponse(response))
     }
