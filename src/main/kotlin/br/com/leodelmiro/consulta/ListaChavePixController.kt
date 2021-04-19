@@ -11,7 +11,7 @@ import java.util.*
 import javax.inject.Inject
 
 @Controller("/api/v1/clientes/{idCliente}")
-class ListaChavePixControllerclass(@Inject val gRpcClient: KeyManagerListaGrpcServiceGrpc.KeyManagerListaGrpcServiceBlockingStub) {
+class ListaChavePixController(@Inject val gRpcClient: KeyManagerListaGrpcServiceGrpc.KeyManagerListaGrpcServiceBlockingStub) {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
